@@ -1,6 +1,6 @@
 // バックエンドのAPIエンドポイント
 const API_BASE_URL =
-  window.location.hostname === "onrender"
+  window.location.hostname === "onrender.com"
     ? "https://vibe-chat-backend-3699.onrender.com/api"
     : "http://localhost:3000/api"; // ←Renderの実際のURLに変更
 
