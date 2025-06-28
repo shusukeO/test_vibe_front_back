@@ -45,7 +45,8 @@ app.post('/api/messages', (req, res) => {
   
   db.insert(newMessage, (err, doc) => {
     if (err) {
-      return res.status(500).json({ error: 'メッセージの保存に失敗しました' });
+      console.error('NeDB insert error:', err);
+      return res.status(500).json({ error: 'メッセージの保存に失敗しました', details: err.message });
     }
     res.status(201).json(doc);
   });
@@ -57,4 +58,7 @@ app.listen(PORT, () => {
   console.log(`📡 API エンドポイント:`);
   console.log(`   GET  http://localhost:${PORT}/api/messages - メッセージ一覧取得`);
   console.log(`   POST http://localhost:${PORT}/api/messages - メッセージ投稿`);
+  console.log(`🔍 環境情報:`);
+  console.log(`   Render環境: ${isRender}`);
+  console.log(`   DB設定: ${isRender ? 'メモリ内' : 'ファイル保存'}`);
 });
