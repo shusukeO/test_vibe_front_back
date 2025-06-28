@@ -4,7 +4,7 @@ const Datastore = require('nedb');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // データベース設定（メッセージ保存用）
 const db = new Datastore({ filename: path.join(__dirname, 'messages.db'), autoload: true });
