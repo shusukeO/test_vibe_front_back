@@ -7,13 +7,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // データベース設定（メッセージ保存用）
-// Render環境ではメモリ内、ローカルではファイル保存
+// Renderでも永続化を試してみる（/tmp ディレクトリを使用）
 const isRender = process.env.RENDER || process.env.NODE_ENV === 'production';
-const db = new Datastore(
-  isRender 
-    ? { inMemoryOnly: true }
-    : { filename: path.join(__dirname, 'messages.db'), autoload: true }
-);
+const dbPath = isRender 
+  ? '/tmp/messages.db'  // Renderでは/tmpディレクトリが書き込み可能
+  : path.join(__dirname, 'messages.db');
+const db = new Datastore({ filename: dbPath, autoload: true });
 
 // ミドルウェア設定
 app.use(cors());
@@ -60,5 +59,5 @@ app.listen(PORT, () => {
   console.log(`   POST http://localhost:${PORT}/api/messages - メッセージ投稿`);
   console.log(`🔍 環境情報:`);
   console.log(`   Render環境: ${isRender}`);
-  console.log(`   DB設定: ${isRender ? 'メモリ内' : 'ファイル保存'}`);
+  console.log(`   DB保存先: ${dbPath}`);
 });
