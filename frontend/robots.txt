@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Block all web crawlers from all content
+# This chat service is intended for private use only
