@@ -2,7 +2,7 @@
 const API_BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:3000/api"
-    : "https://vibe-chat-backend-3699.onrender.com"; // ←Renderの実際のURLに変更
+    : "https://vibe-chat-backend-3699.onrender.com/api"; // ←Renderの実際のURLに変更
 
 // DOM要素の取得
 const messagesContainer = document.getElementById("messagesContainer");
