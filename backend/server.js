@@ -7,7 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // データベース設定（メッセージ保存用）
-const db = new Datastore({ filename: path.join(__dirname, 'messages.db'), autoload: true });
+// Render環境ではメモリ内、ローカルではファイル保存
+const isRender = process.env.RENDER || process.env.NODE_ENV === 'production';
+const db = new Datastore(
+  isRender 
+    ? { inMemoryOnly: true }
+    : { filename: path.join(__dirname, 'messages.db'), autoload: true }
+);
 
 // ミドルウェア設定
 app.use(cors());
