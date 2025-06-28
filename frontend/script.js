@@ -1,8 +1,8 @@
 // バックエンドのAPIエンドポイント
 const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:3000/api"
-    : "https://vibe-chat-backend-3699.onrender.com/api"; // ←Renderの実際のURLに変更
+  window.location.hostname === "onrender"
+    ? "https://vibe-chat-backend-3699.onrender.com/api"
+    : "http://localhost:3000/api"; // ←Renderの実際のURLに変更
 
 // DOM要素の取得
 const messagesContainer = document.getElementById("messagesContainer");
