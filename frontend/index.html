@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Chat - シンプルチャットアプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>💬 Vibe Chat</h1>
+            <p>フロントエンド ⇄ バックエンド 連携デモ</p>
+        </header>
+        
+        <div class="messages-container" id="messagesContainer">
+            <div class="loading" id="loadingMessage">
+                メッセージを読み込み中...
+            </div>
+        </div>
+        
+        <form class="message-form" id="messageForm">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="usernameInput" 
+                    placeholder="あなたの名前" 
+                    required
+                    maxlength="20"
+                >
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="メッセージを入力..." 
+                    required
+                    maxlength="200"
+                >
+                <button type="submit" id="sendButton">
+                    <span>送信</span>
+                    <div class="button-shine"></div>
+                </button>
+            </div>
+        </form>
+        
+        <footer class="chat-footer">
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">接続確認中...</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
